@@ -17,7 +17,7 @@ namespace Lab2_Petrenko_bot
         private static readonly TelegramBotClient BotClient = new TelegramBotClient(BotToken);
         private static readonly HttpClient HttpClient = new HttpClient();
 
-        private static bool isUkrainian = false; // Flag to track the current language
+        private static bool isUkrainian = false;
 
         static async Task Main(string[] args)
         {
@@ -25,12 +25,12 @@ namespace Lab2_Petrenko_bot
             var cancellationToken = cts.Token;
             var receiverOptions = new ReceiverOptions
             {
-                AllowedUpdates = { } // receive all update types
+                AllowedUpdates = { }
             };
 
             try
             {
-                var me = await BotClient.GetMeAsync(); // Validate the token
+                var me = await BotClient.GetMeAsync();
                 Console.WriteLine($"Bot id: {me.Id}. Bot name: {me.FirstName}");
             }
             catch (Exception ex)
