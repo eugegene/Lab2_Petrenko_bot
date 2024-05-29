@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,7 +13,8 @@ namespace Lab2_Petrenko_bot
 {
     class Program
     {
-        private static readonly string BotToken = "topsecret";
+        private static readonly string BotToken = "7139271828:AAG0vJDhtEVSH27uijjNkZbLY0DlcnQ4hoE";
+
         private static readonly TelegramBotClient BotClient = new TelegramBotClient(BotToken);
         private static readonly HttpClient HttpClient = new HttpClient();
 
@@ -66,14 +67,14 @@ namespace Lab2_Petrenko_bot
             {
                 await SendMainMenu(botClient, message.Chat.Id);
             }
-            else if (message.Text == (isUkrainian ? "Надіслати випадкову статтю" : "Send Random Article"))
-            {
-                var article = await GetRandomWikipediaArticle(isUkrainian ? "uk" : "en");
-                await botClient.SendTextMessageAsync(
-                    chatId: message.Chat.Id,
-                    text: article
-                );
-            }
+        else if (message.Text == (isUkrainian ? "Випадкова стаття" : "Random Article"))
+        {
+            var article = await GetRandomWikipediaArticle(isUkrainian ? "uk" : "en");
+            await botClient.SendTextMessageAsync(
+                chatId: message.Chat.Id,
+                text: article
+            );
+        }
             else if (message.Text == (isUkrainian ? "Обрати мову" : "Choose Language"))
             {
                 await SendLanguageMenu(botClient, message.Chat.Id);
@@ -106,7 +107,7 @@ namespace Lab2_Petrenko_bot
         {
             var mainKeyboard = new ReplyKeyboardMarkup(new[]
             {
-                new KeyboardButton[] { isUkrainian ? "Надіслати випадкову статтю" : "Send Random Article" },
+                new KeyboardButton[] { isUkrainian ? "Випадкова стаття" : "Random Article" },
                 new KeyboardButton[] { isUkrainian ? "Обрати мову" : "Choose Language" }
             })
             {
