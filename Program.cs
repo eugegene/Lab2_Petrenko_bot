@@ -13,7 +13,7 @@ namespace Lab2_Petrenko_bot
 {
     class Program
     {
-        private static readonly string BotToken = "7465787277:AAGd7J_XBENVHTp7o1gOXEXzzk9qRMRZ9zY";
+        private static readonly string BotToken = "topsecret";
         private static readonly TelegramBotClient BotClient = new TelegramBotClient(BotToken);
         private static readonly HttpClient HttpClient = new HttpClient();
 
